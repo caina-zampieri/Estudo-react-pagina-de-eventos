@@ -1,2 +1,4 @@
 # Estudo-react-pagina-de-eventos
-Created with CodeSandbox
+
+
+Página de estudo do curso.
