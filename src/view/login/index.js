@@ -15,7 +15,7 @@ function Login() {
             <input type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />          
         
             
-            <button className="btn btn-lg btn-block btn-login" type="button">Logar</button>
+            <button className="btn btn-lg btn-block btn-login" type="button">Logar!</button>
 
             <div className="msg-login text-white text-center my-5">
             </div>
