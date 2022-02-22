@@ -14,13 +14,18 @@ function Login() {
             <input   type="email" id="inputEmail" className="form-control my-2" placeholder="Email" />          
             <input type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />          
         
-            
             <button className="btn btn-lg btn-block btn-login" type="button">Logar!</button>
 
             <div className="msg-login text-white text-center my-5">
+                <span><strong>Wow!</strong> Você está conectado! &#128526;</span>
+                <br />
+                <span><strong>Ops!</strong> Verifique se a senha ou usuario estão corretos! &#128546;</span>
             </div>
 
             <div className="opcoes-login mt-5 text-center">
+                <a href="" className="mx-2">Recuperar Senha</a>
+                <span className="text-white">&#9733;</span>
+                <a href="" className="mx-2">Quero Cadastrar</a>
             </div>
         </form>   
     </div> 
