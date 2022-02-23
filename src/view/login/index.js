@@ -1,7 +1,25 @@
-import React from "react";
-import Style from "./login.css"
+import React, { useState } from 'react';
+import './login.css';
+import firebase from '../../config/firebase';
+import 'firebase/auth';
 
 function Login() {
+
+    const [email, setEmail] = useState();
+    const [senha, setSenha] = useState();
+    const [msgTipo, setMsgTipo] = useState();
+
+
+    function logar(){
+        
+        firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
+            setMsgTipo('sucesso');
+        }).catch(erro => {
+            setMsgTipo('erro');
+        });
+
+    }
+
     return (
         <div className="login-content d-flex align-items-center">
         <form className="form-signin mx-auto">
@@ -11,15 +29,14 @@ function Login() {
             </div>
         
             
-            <input   type="email" id="inputEmail" className="form-control my-2" placeholder="Email" />          
-            <input type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />          
+            <input onChange={(e) => setEmail(e.target.value) } type="email" id="inputEmail" className="form-control my-2" placeholder="Email" />          
+            <input onChange={(e) => setSenha(e.target.value) } type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />          
         
-            <button className="btn btn-lg btn-block btn-login" type="button">Logar!</button>
+            <button className="btn btn-lg btn-block btn-login" type="button" onClick={logar}>Logar!</button>
 
             <div className="msg-login text-white text-center my-5">
-                <span><strong>Wow!</strong> Você está conectado! &#128526;</span>
-                <br />
-                <span><strong>Ops!</strong> Verifique se a senha ou usuario estão corretos! &#128546;</span>
+                {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Você está conectado! &#128526;</span>}
+                {msgTipo === 'erro' && <span><strong>Ops!</strong> Verifique se a senha ou usuario estão corretos! &#128546;</span>}
             </div>
 
             <div className="opcoes-login mt-5 text-center">
