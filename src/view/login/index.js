@@ -3,17 +3,32 @@ import './login.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
+import {
+    Link,
+    BrowserRouter,
+    Routes,
+    Navigate,
+    Route
+  } from "react-router-dom";
+import Navbar from '../../components/navbar';
+
+import { useSelector, useDispatch} from 'react-redux';
+
 function Login() {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
 
+    const Dispatch = useDispatch();
 
     function logar(){
         
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setMsgTipo('sucesso');
+            setTimeout( () => {
+                Dispatch({type: 'LOG_IN', usuarioEmail: email});
+            }, 2000);
         }).catch(erro => {
             setMsgTipo('erro');
         });
@@ -21,7 +36,14 @@ function Login() {
     }
 
     return (
+        <>
+        <Navbar/>
         <div className="login-content d-flex align-items-center">
+
+            {
+                useSelector(state => state.usuarioLogado) > 0 ? <Navigate to="/"/> : null
+            }
+
         <form className="form-signin mx-auto">
             <div className="text-center mb-4">
             <i className="far fa-smile-wink text-white fa-5x"></i>
@@ -40,12 +62,13 @@ function Login() {
             </div>
 
             <div className="opcoes-login mt-5 text-center">
-                <a href="" className="mx-2">Recuperar Senha</a>
+                <Link to="/recuperarsenha" className="mx-2">Recuperar Senha</Link>
                 <span className="text-white">&#9733;</span>
-                <a href="" className="mx-2">Quero Cadastrar</a>
+                <Link to="/novousuario" className="mx-2">Quero Cadastrar</Link>
             </div>
         </form>   
     </div> 
+    </>
     )
 }
 export default Login;

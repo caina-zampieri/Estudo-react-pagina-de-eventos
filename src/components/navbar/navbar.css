@@ -1,0 +1,15 @@
+.navbar{
+    background-color: #614ea6;
+}
+
+.nav-link {
+    color:white;
+    transition: color 0.3s ease-in;
+}
+.nav-link:hover {
+    color:#F21667;
+    transition: color 0.3s ease-in;
+}
+.navbar-toggler-icon {
+    color: #F21667;
+}
