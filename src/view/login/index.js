@@ -10,7 +10,7 @@ import {
     Navigate,
     Route
   } from "react-router-dom";
-import Navbar from '../../components/navbar';
+
 
 import { useSelector, useDispatch} from 'react-redux';
 
@@ -28,7 +28,7 @@ function Login() {
             setMsgTipo('sucesso');
             setTimeout( () => {
                 Dispatch({type: 'LOG_IN', usuarioEmail: email});
-            }, 2000);
+            }, 1000);
         }).catch(erro => {
             setMsgTipo('erro');
         });
@@ -36,8 +36,7 @@ function Login() {
     }
 
     return (
-        <>
-        <Navbar/>
+
         <div className="login-content d-flex align-items-center">
 
             {
@@ -68,7 +67,6 @@ function Login() {
             </div>
         </form>   
     </div> 
-    </>
     )
 }
 export default Login;

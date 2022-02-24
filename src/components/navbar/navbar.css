@@ -13,3 +13,8 @@
 .navbar-toggler-icon {
     color: #F21667;
 }
+
+#sair:hover {
+    cursor: pointer;
+    color: #F21667 !important;
+}
